@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "product_url": "iphone-17-pro",
+      "product_name": "iPhone 17 Pro",
+      "product_img": "../src/assets/images/iphone17pro.jpg",
+      "product_brief_description": "Titanium. So strong. So light. So Pro.",
+      "starting_price": "$999",
+      "price_range": "Or $41.62/mo. for 24 mo."
+    },
+    {
+      "product_url": "iphone-17",
+      "product_name": "iPhone 17",
+      "product_img": "../src/assets/images/iphone11-bg.jpg",
+      "product_brief_description": "Newphoria.",
+      "starting_price": "$799",
+      "price_range": "Or $33.29/mo. for 24 mo."
+    },
+    {
+      "product_url": "iphone-16-pro",
+      "product_name": "iPhone 16 Pro",
+      "product_img": "../src/assets/images/iphone11-pro-bg.jpg",
+      "product_brief_description": "Hello, Apple Intelligence.",
+      "starting_price": "$899",
+      "price_range": "Or $37.45/mo. for 24 mo."
+    },
+    {
+      "product_url": "iphone-16",
+      "product_name": "iPhone 16",
+      "product_img": "../src/assets/images/iphone11-bg.jpg",
+      "product_brief_description": "Built for Apple Intelligence.",
+      "starting_price": "$699",
+      "price_range": "Or $29.12/mo. for 24 mo."
+    }
+  ]
+}
