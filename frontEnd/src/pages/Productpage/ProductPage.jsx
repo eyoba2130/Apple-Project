@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
 function ProductPage() {
-  const { id } = useParams();
+  const { category, id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products/iphone")
+    fetch(`http://localhost:5000/products/${category}`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.products.find((p) => p.product_url === id);
         setProduct(found || null);
-      });
-  }, [id]);
+      }).catch((err) => console.log("Error fetching product:", err));
+  }, [category, id]);
 
   if (!product) {
     return (
@@ -45,7 +45,7 @@ function ProductPage() {
                     <a href="#">Buy</a>
                   </li>
                   <li>
-                    <Link to="/iphone">Back to iPhones</Link>
+                    <Link to={`/${category}`}>Back to {category}s</Link>
                   </li>
                 </ul>
               </div>

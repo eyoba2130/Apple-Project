@@ -31,7 +31,8 @@ app.get("/install", (req, res) => {
   )`;
 
   // ProductDescription table
-const createProductDescription = `CREATE TABLE IF NOT EXISTS ProductDescription(
+  const createProductDescription = `CREATE TABLE IF NOT EXISTS ProductDescription(
+ALTER TABLE ProductDescription MODIFY product_img LONGTEXT NOT NULL;
     description_id INT AUTO_INCREMENT,
     product_id INT NOT NULL,
     product_brief_description VARCHAR(255) NOT NULL,
@@ -51,13 +52,6 @@ const createProductDescription = `CREATE TABLE IF NOT EXISTS ProductDescription(
     FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
   )`;
 
-  // ProductCategory table (optional, not linked to Products in this example)
-  const createProductCategory = `CREATE TABLE IF NOT EXISTS ProductCategory(
-    category_id INT AUTO_INCREMENT,
-    category_name VARCHAR(255) NOT NULL,
-    PRIMARY KEY (category_id)
-  )`;
-
   mysqlConnection.query(createProducts, (err) => {
     if (err) console.log("Products error:", err);
   });
@@ -67,24 +61,22 @@ const createProductDescription = `CREATE TABLE IF NOT EXISTS ProductDescription(
   mysqlConnection.query(createProductPrice, (err) => {
     if (err) console.log("ProductPrice error:", err);
   });
-  mysqlConnection.query(createProductCategory, (err) => {
-    if (err) console.log("ProductCategory error:", err);
-  });
+ 
 
   res.send("Tables created/checked successfully. product_category removed from Products.");
 });
 
 // ---------- FIX DATABASE: drop problematic columns ----------
-app.get("/fix-db", (req, res) => {
-  const fixQuery = `ALTER TABLE Products MODIFY COLUMN product_price VARCHAR(255) NULL DEFAULT NULL`;
-  mysqlConnection.query(fixQuery, (err) => {
-    if (err) {
-      // Column might not exist or already fixed
-      return res.send("Fix attempted: " + err.message);
-    }
-    res.send("Database fixed! product_price column now has a default value.");
-  });
-});
+// app.get("/fix-db", (req, res) => {
+//   const fixQuery = `ALTER TABLE Products MODIFY COLUMN product_price VARCHAR(255) NULL DEFAULT NULL`;
+//   mysqlConnection.query(fixQuery, (err) => {
+//     if (err) {
+//       // Column might not exist or already fixed
+//       return res.send("Fix attempted: " + err.message);
+//     }
+//     res.send("Database fixed! product_price column now has a default value. (Updated to TEXT)!");
+//   });
+// });
 
 // ---------- ADD PRODUCT (safe, no missing column error) ----------
 app.post("/add-product", (req, res) => {
@@ -94,13 +86,12 @@ app.post("/add-product", (req, res) => {
     product_category,
     product_brief_description,
     product_description,
-    product_img,
+    product_img,    
     product_link,
     starting_price,
     price_range,
   } = req.body;
 
-  // Insert into Products
   const insertProduct = `INSERT INTO Products (product_url, product_name, product_category) VALUES (?, ?, ?)`;
   mysqlConnection.query(insertProduct, [product_url, product_name, product_category], (err, result) => {
     if (err) {
@@ -108,12 +99,12 @@ app.post("/add-product", (req, res) => {
       return res.status(500).send("Error inserting product: " + err.message);
     }
 
-    const productId = result.insertId;
+    const productId = result.insertId; 
 
-    // Insert into ProductDescription
     const insertDesc = `INSERT INTO ProductDescription 
       (product_id, product_brief_description, product_description, product_img, product_link) 
       VALUES (?, ?, ?, ?, ?)`;
+    
     mysqlConnection.query(
       insertDesc,
       [productId, product_brief_description, product_description, product_img, product_link],
@@ -123,14 +114,13 @@ app.post("/add-product", (req, res) => {
           return res.status(500).send("Error inserting description: " + err.message);
         }
 
-        // Insert into ProductPrice
         const insertPrice = `INSERT INTO ProductPrice (product_id, starting_price, price_range) VALUES (?, ?, ?)`;
         mysqlConnection.query(insertPrice, [productId, starting_price, price_range], (err) => {
           if (err) {
             console.error("Price insert error:", err);
             return res.status(500).send("Error inserting price: " + err.message);
           }
-          res.send("Product added successfully");
+          res.send("Product added successfully!");
         });
       }
     );
@@ -154,11 +144,11 @@ app.get("/products/:category", (req, res) => {
   mysqlConnection.query(query, [categoryName], (err, rows) => {
     if (err) {
       console.error(err);
-      return res.status(500).json({ error: "የዳታቤዝ ስህተት አጋጥሟል" });
+      return res.status(500).json({ error: "error to database" });
     }
     
     if (rows.length === 0) {
-      return res.status(404).json({ message: "በዚህ ምድብ ምንም ምርት አልተገኘም" });
+      return res.status(404).json({ message: "No products found in this category" });
     }
 
     res.json({ 

@@ -168,3 +168,11 @@
     opacity: 0.8;
   }
 }
+
+
+ /* Justify content for desktop */
+.nav-justified{
+  display: flex;
+  justify-content: space-between;
+}
+ 

@@ -62,7 +62,7 @@ function Music() {
                   <div className="links-wrapper">
                     <ul>
                       <li>
-                        <Link to={productPage}>Learn more</Link>
+                     <Link to={`/product/${product.product_category}/${product.product_url}`}> Learn More</Link>
                       </li>
                     </ul>
                   </div>

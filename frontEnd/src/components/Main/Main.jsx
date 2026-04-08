@@ -36,7 +36,7 @@ function Main() {
           <div className="links-wrapper">
             <ul>
               <li>
-                <a href="">Learn more</a>
+                <a href="ipad">Learn more</a>
               </li>
               <li>
                 <a href="">Order</a>
@@ -70,7 +70,7 @@ function Main() {
           <div className="links-wrapper">
             <ul>
               <li>
-                <a href="">Learn more</a>
+                <a href="mac">Learn more</a>
               </li>
               <li>
                 <a href="">Buy</a>
@@ -95,7 +95,7 @@ function Main() {
           <div className="links-wrapper">
             <ul>
               <li>
-                <a href="">Learn more</a>
+                <a href="iphone">Learn more</a>
               </li>
               <li>
                 <a href="">Buy</a>
@@ -121,10 +121,10 @@ function Main() {
                 <div className="links-wrapper">
                   <ul>
                     <li>
-                      <a href="">Learn more</a>
+                      <a href="iphone">Learn more</a>
                     </li>
                     <li>
-                      <a href="">Apply now</a>
+                      <a href="iphone">Apply now</a>
                     </li>
                   </ul>
                 </div>
@@ -139,7 +139,7 @@ function Main() {
                 <div className="links-wrapper white">
                   <ul>
                     <li>
-                      <a href="">Watch the PSA</a>
+                      <a href="watch">Watch the PSA</a>
                     </li>
                   </ul>
                 </div>
@@ -184,7 +184,7 @@ function Main() {
                 <div className="links-wrapper">
                   <ul>
                     <li>
-                      <a href="">Learn more</a>
+                      <a href="tv">Learn more</a>
                     </li>
                     <li>
                       <a href="">Buy</a>

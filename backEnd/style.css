@@ -1,0 +1,255 @@
+/* style.css - Modern Apple-Inspired Form Styling */
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(145deg, #f5f5f7 0%, #e8e8ed 100%);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  color: #1d1d1f;
+  line-height: 1.4;
+}
+
+/* Main Heading */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1d1d1f 0%, #43434e 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+/* Form Container - Card Style */
+form {
+  max-width: 880px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 2rem 2rem 2.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+form:hover {
+  box-shadow: 0 24px 42px -16px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Headers (h2 inside form) */
+form h2 {
+  font-size: 1.6rem;
+  font-weight: 590;
+  margin: 1.5rem 0 1rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #e9e9ef;
+  color: #1d1d1f;
+  letter-spacing: -0.2px;
+}
+
+form h2:first-of-type {
+  margin-top: 0;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.35rem;
+  color: #2c2c2e;
+  letter-spacing: -0.2px;
+}
+
+/* Inputs, Select, Textarea shared style */
+input[type="text"],
+input[type="url"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fbfbfd;
+  border: 1px solid #d2d2d6;
+  border-radius: 14px;
+  transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  outline: none;
+  color: #1d1d1f;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Focus state for all interactive fields */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #0071e3;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+  background-color: #ffffff;
+}
+
+/* Select dropdown custom arrow (subtle) */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2368686f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Improve button styling */
+input[type="submit"] {
+  background-color: #0071e3;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  width: auto;
+  min-width: 180px;
+  margin-top: 2rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 113, 227, 0.2);
+  letter-spacing: -0.2px;
+}
+
+input[type="submit"]:hover {
+  background-color: #005bb5;
+  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 91, 181, 0.25);
+}
+
+input[type="submit"]:active {
+  transform: scale(0.96);
+}
+
+/* Spacing for div groups */
+form div {
+  margin-bottom: 0.3rem;
+}
+
+/* Special spacing for product_img duplicate labels? Clean appearance anyway */
+/* Additional spacing for br tags – just keep natural */
+br {
+  display: none;
+}
+
+/* But we'll keep normal flow, the <br> in HTML are hidden but not breaking layout */
+/* Instead rely on margin between elements, but to avoid double spacing we hide breaks */
+/* Because form uses block elements + margins, <br> would add extra gaps */
+br {
+  display: none;
+}
+
+/* On small screens, improve spacing */
+@media (max-width: 700px) {
+  body {
+    padding: 1rem;
+  }
+
+  form {
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  form h2 {
+    font-size: 1.35rem;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Fine-tune the first label after each section to have less gap */
+div:first-of-type label {
+  margin-top: 0.2rem;
+}
+
+/* Special for the starting_price and price_range fields */
+input[name="starting_price"],
+input[name="price_range"] {
+  background-color: #fbfbfd;
+}
+
+/* Fix placeholder styling */
+::placeholder {
+  color: #8e8e93;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* Group for product brief description & description textarea rows */
+textarea[name="product_brief_description"],
+textarea[name="product_description"] {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Make sure select options are readable */
+select option {
+  padding: 0.6rem;
+  background: white;
+  color: #1d1d1f;
+}
+
+/* Add a subtle focus ring for accessibility */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: #0071e3;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.25);
+}
+
+/* Consistent margin for fieldsets-like groups */
+div > br + input,
+div > br + select {
+  margin-top: 0.2rem;
+}
+
+/* Better visual for product_link and product_img fields */
+input[name="product_link"],
+input[name="product_img"] {
+  font-family: monospace;
+  letter-spacing: 0.2px;
+}
+
+/* Rounded inside edges for card-like form */
+input, select, textarea {
+  transition: border 0.2s, box-shadow 0.2s, background 0.1s;
+}
+
+/* Add elegant line spacing between fields */
+label + br {
+  display: none;
+}
+
+/* Ensure the category select aligns perfectly */
+select[name="product_category"] {
+  margin-bottom: 0.25rem;
+}
+
+/* Optional: give a little style to disabled fields? Not needed. */
+/* Make the price_range hint (optional) look consistent */

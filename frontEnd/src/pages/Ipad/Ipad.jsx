@@ -26,7 +26,7 @@ export default function Ipad() {
               </div>
             </div>
           </div>
-          {products.map((product) => {
+          {products?.map((product) => {
             let id = product.product_url;
             let title = product.product_name;
             let img = product.product_img;
@@ -60,7 +60,7 @@ export default function Ipad() {
                   <div className="links-wrapper">
                     <ul>
                       <li>
-                        <Link to={productPage}>Learn more</Link>
+                  <Link to={`/product/${product.product_category}/${product.product_url}`}> Learn More</Link>
                       </li>
                     </ul>
                   </div>
